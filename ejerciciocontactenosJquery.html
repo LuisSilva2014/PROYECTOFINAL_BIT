@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Fomulario Materialize</title>
+    <!--Import Google Icon Font-->
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/materialize.css">
+	<link rel="stylesheet" href="css/swiper.css">
+		
+    <script src="js/jquery-3.1.1.js"></script>
+    <script src="js/materialize.js"></script>
+	<script src="js/swiper.js"></script>
+
+    <script>
+        //El ready representa al DOM cargado
+        $(document).ready(function () {
+            $("#miBtn").click(function () {
+                if ($("#Nombres").val() == "" ||  $("#Nombres").hasClass("invalid")== true )  
+                {
+                    Materialize.toast('Verifique su nombre. No puede estar vacio y debe cumplir las restrinciones', 6000)
+
+                    //alert("Verifique su nombre. No puede estar vacio y debe cumplir las restrinciones");
+                    $("#Nombres").focus();
+
+                } else if ($("#Apellido").val() == "" || $("#Apellido").hasClass("invalid")== true ) 
+                {
+
+                   alert("Verifique su apellido. No puede estar vacio y debe cumplir las restrinciones");
+                   $("#Apellido").focus();
+
+                } else if ($("#Correo").val() == "" ||  $("#Correo").hasClass("invalid")== true ) 
+                {
+                    alert("Verifique su correo. No puede estar vacio y debe cumplir las restrinciones");
+                    $("#Correo").focus();
+
+                } else if ($("#Edad").val() == "" || $("#Correo").hasClass("invalid")== true ) 
+                {
+                   alert("Verifique su edad. No puede estar vacio y debe cumplir las restrinciones");
+                    $("#Edad").focus();
+                } else {
+                    //Quiere decir que todos los inputs tienen algo en su atributo value
+                    //Por lo, tanto procemos a guardar la solituds
+                        Materialize.toast('Correcto', 6000)
+                        $("#imgload").show(2000);
+                        setTimeout(function(){
+                             $("#imgload").hide(1000);
+                             Materialize.toast('Datos restaurados para una nueva solicitud', 6000)
+                            // $("#Apellido").val("");
+                            // $("#Correo").val("");
+                            // $("#Edad").val("");
+                            // $("#Nombres").val("");
+                            $("input").val("");
+                            $("#Nombres").focus();
+                         }, 5000);
+                }
+            });
+			
+			 var swiper = new Swiper('.swiper-container', {
+                pagination: '.swiper-pagination',
+                effect: 'cube',
+                grabCursor: true,
+                cube: {
+                    shadow: true,
+                    slideShadows: true,
+                    shadowOffset: 20,
+                    shadowScale: 0.94
+                }
+            });
+			
+        });// La finalizacion del ready
+    </script>
+ <style>
+    /*html, body {
+        position: relative;
+        height: 100%;
+    }*/
+    /*body {
+        background: #eee;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color:#000;
+        margin: 0;
+        padding: 0;
+    }*/
+    .swiper-container {
+        width: 50%;
+        height: 50%;
+    }
+    .swiper-slide {
+        width: 200px;
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+  </style>
+	
+</head>
+
+<body>
+    <div class="row">
+        <div class="col l12" style="text-align:center">
+            <h3> Formulario BIT </h3>
+
+        </div>
+        <hr>
+        <div class="container">
+            <div class="row">
+                <div class="col l6">
+                    <div class="input-field">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input id="Nombres" type="text" placeholder="Ejemplo Manolo, Maria" class="validate" data-length="10" />
+                        <label for="Nombres" data-error="Maximo 10 caracteres" data-success="Muy Bien"></label><label for=""> Ingrese su nombre</label>
+                    </div>
+                </div>
+                <div class="col l6">
+                    <div class="input-field">
+                        <i class="material-icons prefix">perm_identity</i>
+                        <input id="Apellido" type="text" placeholder="Ejemplo Perez, Fernandez" class="validate" data-length="10" />
+                        <label for=""> Ingrese su Apellido</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col l6">
+
+                        <div class="input-field">
+                            <i class="material-icons prefix">email</i>
+                            <input id="Correo" type="email" placeholder="Ejemplo pedro.perez@gmail.com" class="validate" />
+                            <label for="Correo"> Ingrese su Correo</label>
+                        </div>
+
+                    </div>
+                    <div class="col l6">
+                        <div class="input-field">
+                            <i class="material-icons prefix">thumb_up</i>
+                            <input id="Edad" type="text" placeholder="Ejemplo 20,30,45" class="validate" />
+                            <label for=""> Ingrese su Edad</label>
+
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col l6">
+                            <button id="miBtn" class="btn waves-effect waves-light red" type="submit" name="action">Enviar
+                            <i class="material-icons right">send</i>
+                            </button>
+                            <img id="imgload" src="https://media.giphy.com/media/xTk9ZvMnbIiIew7IpW/giphy.gif" style="width: 150px; display: none;">
+                        </div>
+                        <div class="col l6"></div>
+                    </div>
+
+                    <div class="row">   
+                        <div class="col s10">   
+                              <!-- Swiper -->
+                            <div class="swiper-container">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide" style="width:100px">
+                                        <img src="img/CLARO_INTRANET2.jpg" alt="">
+                                    </div>
+                                    <div class="swiper-slide"  style="width:100px"   >
+                                        <img src="img/SITE_EMBLACOM_NICARAGUA.jpg" alt="">
+                                    </div>
+                                </div>
+                                <!-- Add Pagination -->
+                                <div class="swiper-pagination"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			<div class="container"> 
+                    
+              
+                
+            </div>
+</body>
+
+</html>
