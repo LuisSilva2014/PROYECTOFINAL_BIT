@@ -39,7 +39,7 @@
                     alert("Verifique su correo. No puede estar vacio y debe cumplir las restrinciones");
                     $("#Correo").focus();
 
-                } else if ($("#Edad").val() == "" || $("#Correo").hasClass("invalid")== true ) 
+                } else if ($("#Edad").val() == "" || $("#Edad").hasClass("invalid")== true ) 
                 {
                    alert("Verifique su edad. No puede estar vacio y debe cumplir las restrinciones");
                     $("#Edad").focus();
@@ -53,10 +53,10 @@
                           
 
                         var Datos=
-                        "?nombres=" + $("#txtNombresApellidos").val() +
-                        "&telefono=" + $("#txtTel").val() +
-                        "&mensaje=" + $("#txtMensaje").val() +  Correo
-                        "&emailto=vale.colmenares@gmail.com" +
+                        "?nombres=" + $("#Apellido").val() +
+                        "&telefono=" + $("#Edad").val() +
+                        "&mensaje=" + $("#Apellido").val() +  
+                        "&emailto=" + $("#Correo").val() +  
                         "&emailcc=luis.silva@bit.institute";
 
 
