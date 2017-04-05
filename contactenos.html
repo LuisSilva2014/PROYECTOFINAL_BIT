@@ -8,8 +8,103 @@
 
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
-  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link rel="stylesheet" href="css/materialize.css">
+    <link rel="stylesheet" href="css/swiper.css">
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+
+    <script src="js/jquery-3.1.1.js"></script>
+    <script src="js/materialize.js"></script>
+    <script src="js/swiper.js"></script>
+
+
+    <script>
+        //El ready representa al DOM cargado
+        $(document).ready(function () {
+            $("#miBtn").click(function () {
+                if ($("#Nombres").val() == "" ||  $("#Nombres").hasClass("invalid")== true )  
+                {
+                    Materialize.toast('Verifique su nombre. No puede estar vacio y debe cumplir las restrinciones', 6000)
+
+                    //alert("Verifique su nombre. No puede estar vacio y debe cumplir las restrinciones");
+                    $("#Nombres").focus();
+
+                } else if ($("#Apellido").val() == "" || $("#Apellido").hasClass("invalid")== true ) 
+                {
+
+                   alert("Verifique su apellido. No puede estar vacio y debe cumplir las restrinciones");
+                   $("#Apellido").focus();
+
+                } else if ($("#Correo").val() == "" ||  $("#Correo").hasClass("invalid")== true ) 
+                {
+                    alert("Verifique su correo. No puede estar vacio y debe cumplir las restrinciones");
+                    $("#Correo").focus();
+
+                } else if ($("#Edad").val() == "" || $("#Correo").hasClass("invalid")== true ) 
+                {
+                   alert("Verifique su edad. No puede estar vacio y debe cumplir las restrinciones");
+                    $("#Edad").focus();
+                } else {
+                    //Quiere decir que todos los inputs tienen algo en su atributo value
+                    //Por lo, tanto procemos a guardar la solituds
+                        Materialize.toast('Correcto', 6000)
+                        $("#imgload").show(2000);
+                        setTimeout(function(){
+                            // Conexion al servidor via ajax 
+                          
+
+                        var Datos=
+                        "?nombres=" + $("#txtNombresApellidos").val() +
+                        "&telefono=" + $("#txtTel").val() +
+                        "&mensaje=" + $("#txtMensaje").val() +  Correo
+                        "&emailto=vale.colmenares@gmail.com" +
+                        "&emailcc=luis.silva@bit.institute";
+
+
+                        $.ajax({
+                            type: "GET",
+                            url: "http://ciclo1.bit.institute/api/correos" + Datos,
+                            dataType: 'application/json; charset=UTF-8',
+                            success: function (data) {
+                                //alerta("Datos enviados de forma exitosa.")
+                            },
+                            error:function(data1){
+                                //alert("No hay conexión con el servidor")
+                            }
+                        });
+                        AbrirModal("Datos enviados de forma exitosa.")    
+                           
+                          
+                          
+                          
+                          
+                          
+                          
+                             $("#imgload").hide(1000);
+                             Materialize.toast('Datos restaurados para una nueva solicitud', 6000)
+                            // $("#Apellido").val("");
+                            // $("#Correo").val("");
+                            // $("#Edad").val("");
+                            // $("#Nombres").val("");
+                            $("input").val("");
+                            $("#Nombres").focus();
+                         }, 5000);
+                }
+            });
+			
+			//  var swiper = new Swiper('.swiper-container', {
+      //           pagination: '.swiper-pagination',
+      //           effect: 'cube',
+      //           grabCursor: true,
+      //           cube: {
+      //               shadow: true,
+      //               slideShadows: true,
+      //               shadowOffset: 20,
+      //               shadowScale: 0.94
+      //           }
+      //       });
+			
+        });// La finalizacion del ready
+    </script>
 </head>
 
 <body>
